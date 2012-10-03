@@ -7,7 +7,7 @@
 	<script src="cordova-2.1.0.js"></script> 
 	<script type="text/javascript" charset="utf-8">
 		// wait for cordova to load
-		document.addEventListener("deviceready", onDeviceReady, fase);
+		document.addEventListener("deviceready", onDeviceReady, false);
 
 		// cordova is ready
 		function onDeviceReady() {
@@ -44,22 +44,20 @@
 		}
 	</script>
 </head> 
+<body> 
+	<div data-role="page" id="one">
 
-<body onload = "init();"> 
+		<div data-role="header">
+			<h1>PathFinder</h1>
+		</div>
 
-<div data-role="page" id="one">
+		<div data-role="content">
+			<p id="geolocation">
+			Finding Geolocation..
+			</p>
+		</div>
 
-	<div data-role="header">
-		<h1>PathFinder</h1>
 	</div>
-
-	<div data-role="content">
-		<p id="geolocation">
-		Finding Geolocation..
-		</p>
-	</div>
-	
-</div>
 
 </body>
 </html>
