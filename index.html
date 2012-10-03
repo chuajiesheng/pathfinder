@@ -13,6 +13,9 @@
 
 		// cordova is ready
 		function onDeviceReady() {
+			var element = document.getElementById('geolocation');
+			element.innerHTML = 
+				'Cordova Loaded.';
 			navigator.geolocation.getCurrentPosition(onSuccess, onError);
 		}
 
@@ -55,7 +58,7 @@
 
 		<div data-role="content">
 			<p id="geolocation">
-			Finding Geolocation..
+			Finding Geolocation...
 			</p>
 		</div>
 
