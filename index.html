@@ -1,69 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Device Properties Example</title>
-
-<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-<script type="text/javascript" charset="utf-8">
-
-// Wait for PhoneGap to load
-//
-document.addEventListener("deviceready", onDeviceReady, false);
-
-// PhoneGap is ready
-//
-function onDeviceReady() {
-navigator.geolocation.getCurrentPosition(onSuccess, onError);
-}
-
-// onSuccess Geolocation
-//
-function onSuccess(position) {
-var element = document.getElementById('geolocation');
-element.innerHTML = 'Latitude: ' + position.coords.latitude + '<br />' +
-'Longitude: ' + position.coords.longitude + '<br />' +
-'Altitude: ' + position.coords.altitude + '<br />' +
-'Accuracy: ' + position.coords.accuracy + '<br />' +
-'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '<br />' +
-'Heading: ' + position.coords.heading + '<br />' +
-'Speed: ' + position.coords.speed + '<br />' +
-'Timestamp: ' + new Date(position.timestamp) + '<br />';
-}
-
-// onError Callback receives a PositionError object
-//
-function onError(error) {
-alert('code: ' + error.code + '\n' +
-'message: ' + error.message + '\n');
-}
-
-</script>
-</head>
-<body>
-<p id="geolocation">Finding geolocation...</p>
-</body>
-</html>
-
-
-<!--
 <!DOCTYPE html> 
 <html>
 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<title>PathFinder</title> 
-	<script src="cordova.js"></script> 
-	<script src="phonegap.js"></script>
-	<script src="childbrowser.js"></script>
+	<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+	<script type="text/javascript" charset="utf-8" src="childbrowser.js"></script>
 	<script type="text/javascript" charset="utf-8">
-		// wait for cordova to load
+		// wait for phonegap to load
 		document.addEventListener("deviceready", onDeviceReady, false);
 
-		// cordova is ready
+		// phonegap is ready
 		function onDeviceReady() {
 			var element = document.getElementById('geolocation');
 			element.innerHTML = 
-				'Cordova Loaded.';
+				'PhoneGap Loaded.';
 			navigator.geolocation.getCurrentPosition(onSuccess, onError);
 		}
 
@@ -71,21 +22,14 @@ alert('code: ' + error.code + '\n' +
 		function onSuccess(position) {
 			var element = document.getElementById('geolocation');
 			element.innerHTML = 
-				'Lat: ' + position.coords.latitude + 
-				'<br />' +
-				'Long: ' + position.coords.longitude +
-				'<br />' +
-				'Alt: ' + position.coords.altitude +
-				'<br />' +
-				'Accuracy: ' + position.coords.accuracy +
-				'<br />' + 
-				'Alt Accuracy: ' + position.coords.altitudeAccuracy +
-				'<br />' +
-				'Head: ' + position.coords.heading +
-				'<br />' +
-				'Speed: ' + position.coords.speed +
-				'<br />' + 
-				'Timestamp: ' + position.timestamp;
+				'Latitude: ' + position.coords.latitude + '<br />' +
+				'Longitude: ' + position.coords.longitude + '<br />' +
+				'Altitude: ' + position.coords.altitude + '<br />' +
+				'Accuracy: ' + position.coords.accuracy + '<br />' +
+				'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '<br />' +
+				'Heading: ' + position.coords.heading + '<br />' +
+				'Speed: ' + position.coords.speed + '<br />' +
+				'Timestamp: ' + new Date(position.timestamp) + '<br />';
 		}
 
 		function onError(error) {
@@ -114,4 +58,3 @@ alert('code: ' + error.code + '\n' +
 
 </body>
 </html>
--->
