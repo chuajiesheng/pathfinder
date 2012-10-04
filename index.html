@@ -6,16 +6,36 @@
 	<title>PathFinder</title> 
 
 	<!-- phonegap libs -->
-	<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-	<script type="text/javascript" charset="utf-8" src="childbrowser.js"></script>
+	<script type="text/javascript" charset="utf-8" src="phonegap.js">
+		if (console.log) {
+			console.log("loaded phonegap.js");
+		}
+	</script>
+	<script type="text/javascript" charset="utf-8" src="childbrowser.js">
+		if (console.log) {
+			console.log("loaded childbrower.js");
+		}
+	</script>
 
 	<!-- jquery libs -->
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
-	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>	
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js">
+		if (console.log) {
+			console.log("loaded jquery.min.js");
+		}
+	</script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js">
+		if (console.log) {
+			console.log("loaded jquery.mobile.js");
+		}
+	</script>
 	
 	<!-- google map libs -->
-	<script type="text/javascript" charset="utf-8" src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=places"></script>
+	<script type="text/javascript" charset="utf-8" src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=places">
+		if (console.log) {
+			console.log("loaded google map places lib");
+		}
+	</script>
 
 	<script type="text/javascript" charset="utf-8">
 		// wait for phonegap to load
