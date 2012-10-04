@@ -14,9 +14,14 @@
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>	
 	
+	<!-- google map libs -->
+	<script type="text/javascript" charset="utf-8" src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=places"></script>
+
 	<script type="text/javascript" charset="utf-8">
 		// wait for phonegap to load
 		document.addEventListener("deviceready", onDeviceReady, false);
+		// init maps on load
+		google.maps.event.addDomListener(window, 'load', initMap);
 
 		// phonegap is ready
 		function onDeviceReady() {
@@ -40,7 +45,7 @@
 				'Timestamp: ' + new Date(position.timestamp) + '<br />';
 
 			$('#map').text("initalising map");
-
+			initMap(position.coords.latitude, position.coords.longitude, 500);
 		}
 
 		function onError(error) {
@@ -50,6 +55,74 @@
 				'<br />' +
 				'Msg: ' + error.message;
 		}
+
+		// map js code
+		var map;
+		var infowindow;
+
+		function initMap(lat, long, rad) {
+			var pyrmont = new google.maps.LatLng(lat, long);
+
+			map = new google.maps.Map(document.getElementById('map'), {
+				mapTypeId: google.maps.MapTypeId.ROADMAP,
+				center: pyrmont,
+				zoom: 15
+			});
+
+			var request = {
+				location: pyrmont,
+		  		radius: rad,
+		  		types: ['accounting', 'airport ', 'amusement_park', 
+				  	'aquarium ', 'art_gallery', 'bakery ', 
+					'bank ', 'bar ', 'beauty_salon', 
+					'bicycle_store', 'book_store', 'bowling_alley', 
+					'bus_station', 'cafe ', 'campground ', 
+					'car_dealer', 'car_rental', 'car_repair', 
+					'casino ', 'church ', 'city_hall', 
+					'clothing_store', 'convenience_store', 
+					'courthouse', 'dentist ', 'department_store', 
+					'doctor', 'electrician', 'electronics_store', 
+					'embassy ', 'establishment ', 'finance ', 
+					'florist ', 'food ', 'furniture_store', 
+					'gas_station', 'general_contractor', 'grocery_or_supermarket', 
+					'gym ', 'hair_care', 'hardware_store', 
+					'health ', 'hindu_temple', 'home_goods_store', 
+					'hospital ', 'insurance_agency', 'jewelry_store', 
+					'laundry ', 'lawyer ', 'library ', 
+					'liquor_store', 'local_government_office', 'locksmith ', 
+					'lodging ', 'meal_delivery', 'meal_takeaway', 
+					'mosque', 'movie_rental', 'movie_theater', 
+					'moving_company', 'museum ', 'night_club', 
+					'painter ', 'park ', 'pet_store', 
+					'pharmacy ', 'physiotherapist ', 'place_of_worship', 
+					'plumber ', 'police ', 'post_office', 
+					'real_estate_agency', 'restaurant ', 'roofing_contractor', 
+					'rv_park', 'school ', 'shoe_store', 
+					'shopping_mall', 'spa', 'stadium ', 
+					'storage ', 'store ', 'subway_station', 
+					'synagogue ', 'taxi_stand', 'train_station', 
+					'travel_agency', 'university', 'veterinary_care', 
+					'zoo ', 'colloquial_area', 'floor', 
+					'point_of_interest', 'post_box', 'premise', 
+					'room', 'subpremise', 'transit_station']
+			};
+
+			var service = new google.maps.places.PlacesService(map);
+			service.search(request,mapCallBack);
+		}
+
+		function mapCallBack(results, status) {
+			if (status == google.maps.places.PlacesServiceStatus.OK) {
+				for (var i = 0; i < results.length; i++) {
+					var place = results[i];
+					var placeLoc = place.geometry.location;
+					var placeName = place.name;
+
+					$('#places').(placeName + " @ " + placeLoc + "<br>");
+				}
+			}
+		}
+
 	</script>
 </head> 
 <body> 
