@@ -67,7 +67,15 @@
 				mapTypeId: google.maps.MapTypeId.ROADMAP,
 				center: pyrmont,
 				zoom: 15
-			});
+				});
+
+			// finetune radius to 100 < rad < (accuracy * 3)
+			if ((rad * 3) < 100) {
+				rad = 100;
+			} else {
+				rad = rad * 3;
+			}
+			$('logs').append('radius = ' + rad);
 
 			var request = {
 				location: pyrmont,
