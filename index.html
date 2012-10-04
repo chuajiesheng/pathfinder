@@ -63,7 +63,7 @@
 		function initMap(lat, long, rad) {
 			var pyrmont = new google.maps.LatLng(lat, long);
 
-			map = new google.maps.Map(document.getElementById('map'), {
+			var map = new google.maps.Map(document.getElementById('map'), {
 				mapTypeId: google.maps.MapTypeId.ROADMAP,
 				center: pyrmont,
 				zoom: 15
@@ -106,7 +106,7 @@
 					'point_of_interest', 'post_box', 'premise', 
 					'room', 'subpremise', 'transit_station']
 			};
-
+			
 			var service = new google.maps.places.PlacesService(map);
 			service.search(request,mapCallBack);
 		}
@@ -118,7 +118,9 @@
 					var placeLoc = place.geometry.location;
 					var placeName = place.name;
 
-					$('#places').text(placeName + " @ " + placeLoc + "<br>");
+					alert(placeName);
+
+					//$('#places').text(placeName + " @ " + placeLoc + "<br>");
 				}
 			}
 		}
