@@ -69,12 +69,8 @@
 				zoom: 15
 				});
 
-			// finetune radius to 100 < rad < (accuracy * 3)
-			if ((rad * 3) < 100) {
-				rad = 100;
-			} else {
-				rad = rad * 3;
-			}
+			// change radius to 500m dated 05102012
+			rad = 500;
 			$('#logs').append('<p>radius = ' + rad + '</p>');
 
 			var request = {
