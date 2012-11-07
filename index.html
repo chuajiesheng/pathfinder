@@ -118,6 +118,7 @@
 
 		var places = [];
 		function mapCallBack(results, status) {
+			$('#logs').append('<p>map called back</p>');
 			if (status == google.maps.places.PlacesServiceStatus.OK) {
 				
 				for (var i = 0; i < results.length; i++) {
@@ -130,6 +131,7 @@
 				$("#places").autocomplete({
 					source: places
 				});
+				$('#logs').append('<p>places.length = ' + places.length + '</p>');
 			}
 		}
 
