@@ -127,7 +127,7 @@
 					var placeLoc = place.geometry.location;
 					var placeName = place.name;
 
-					if ($.inArray(placeName, places) > -1) {
+					if ($.inArray(placeName, places) == -1) {
 						places.push($.trim(placeName));
 						$('#logs').append('place = "' + placeName + '"<br />');
 					} else {
