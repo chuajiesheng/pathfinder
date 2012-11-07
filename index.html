@@ -127,9 +127,12 @@
 					var placeLoc = place.geometry.location;
 					var placeName = place.name;
 
-					places.push($.trim(placeName));
-
-					$('#logs').append('place = "' + placeName + '"<br />');
+					if ($.inArray(placeName, places) > -1) {
+						places.push($.trim(placeName));
+						$('#logs').append('place = "' + placeName + '"<br />');
+					} else {
+						$('#logs').append('drop = "' + placeName + '"<br />');
+					}
 				}
 				$('#logs').append('places.length = ' + places.length + '<br />');
 
