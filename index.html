@@ -130,6 +130,10 @@
 					places.push(placeName);
 				}
 				$('#logs').append('places.length = ' + places.length + '<br>');
+
+				places = jQuery.unique(places);
+
+				$('#logs').append('post-unique places.length = ' + places.length + '<br>');
 			}
 			$("#places").autocomplete({
 				source: places
