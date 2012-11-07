@@ -118,6 +118,8 @@
 		}
 
 		var places = [];
+		var placesLoc = [];
+
 		function mapCallBack(results, status) {
 			$('#logs').append('map called back<br />');
 			if (status == google.maps.places.PlacesServiceStatus.OK) {
@@ -129,28 +131,17 @@
 
 					if ($.inArray(placeName, places) == -1) {
 						places.push($.trim(placeName));
-						$('#logs').append('place = "' + placeName + '"<br />');
+						placesLoc.push(placeLoc);
+						$('#logs').append('' + placeName + ' @ ' + placeLoc + '<br />');
 					} else {
 						$('#logs').append('drop = "' + placeName + '"<br />');
 					}
 				}
-				$('#logs').append('places.length = ' + places.length + '<br />');
-
-				places = unique(places);
-
-				$('#logs').append('post-unique places.length = ' + places.length + '<br />');
 			}
 			$("#places").autocomplete({
 				source: places
 			});
 		}
-
-		function unique(array) {
-			return $.grep(array, function(el, index) {
-				return index == $.inArray(el, array);
-			});
-		}
-
 	</script>
 </head> 
 <body> 
