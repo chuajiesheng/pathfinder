@@ -73,7 +73,7 @@
 
 			// change radius to 500m dated 05102012
 			rad = 500;
-			$('#logs').append('radius = ' + rad + '<br>');
+			$('#logs').append('radius = ' + rad + '<br />');
 
 			var request = {
 				location: pyrmont,
@@ -119,7 +119,7 @@
 
 		var places = [];
 		function mapCallBack(results, status) {
-			$('#logs').append('map called back<br>');
+			$('#logs').append('map called back<br />');
 			if (status == google.maps.places.PlacesServiceStatus.OK) {
 				
 				for (var i = 0; i < results.length; i++) {
@@ -129,16 +129,22 @@
 
 					places.push($.trim(placeName));
 
-					$('#logs').append('place = "' + placeName + '"<br>');
+					$('#logs').append('place = "' + placeName + '"<br />');
 				}
-				$('#logs').append('places.length = ' + places.length + '<br>');
+				$('#logs').append('places.length = ' + places.length + '<br />');
 
-				places = jQuery.unique(places);
+				places = unique(places);
 
-				$('#logs').append('post-unique places.length = ' + places.length + '<br>');
+				$('#logs').append('post-unique places.length = ' + places.length + '<br />');
 			}
 			$("#places").autocomplete({
 				source: places
+			});
+		}
+
+		function unique(array) {
+			return $.grep(array, function(el, index) {
+				return index == $.inArray(el, array);
 			});
 		}
 
