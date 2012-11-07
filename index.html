@@ -12,6 +12,7 @@
 	<!-- jquery libs -->
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	
 	<!-- google map libs -->
@@ -115,18 +116,20 @@
 			service.search(request,mapCallBack);
 		}
 
+		var places = [];
 		function mapCallBack(results, status) {
 			if (status == google.maps.places.PlacesServiceStatus.OK) {
+				
 				for (var i = 0; i < results.length; i++) {
 					var place = results[i];
 					var placeLoc = place.geometry.location;
 					var placeName = place.name;
 
-					$('#places').append(
-							'<li data-filtertext="' + placeName + '"><a href="#">' + placeName + '</a></li>'
-							);
+					places.push(placeName);
 				}
-				$('#places').listview('refresh');
+				$("#places").autocomplete({
+					source: places
+				});
 			}
 		}
 
@@ -154,8 +157,7 @@
 			</div>
 			<div>
 				<h2>Places</h2>
-				<ul id="places" data-role="listview" data-filter="true" data-filter-placeholder="Search places..." data-inset="true">
-				</ul>
+				<label id="places" />
 			</div>
 			<div>
 				<h2>Logs</h2>
