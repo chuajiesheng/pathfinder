@@ -1,3 +1,5 @@
+document.addEventListener("deviceready", onDeviceReady, false);
+
 // called when phonegap is ready
 function onDeviceReady() {
 	var element = document.getElementById('geolocation');
