@@ -2,7 +2,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 // called when phonegap is ready
 function onDeviceReady() {
-	var element = document.getElementById('geolocation');
+	var element = document.getElementById('geo-geolocation');
 	element.innerHTML = 
 		'PhoneGap Loaded.';
 	navigator.geolocation.getCurrentPosition(onSuccess, onError);
@@ -10,7 +10,7 @@ function onDeviceReady() {
 
 // onSuccess Geolocation
 function onSuccess(position) {
-	var element = document.getElementById('geolocation');
+	var element = document.getElementById('geo-geolocation');
 	element.innerHTML = 
 		'Latitude: ' + position.coords.latitude + '<br />' +
 		'Longitude: ' + position.coords.longitude + '<br />' +
@@ -26,7 +26,7 @@ function onSuccess(position) {
 }
 
 function onError(error) {
-	var element = document.getElementById('geolocation');
+	var element = document.getElementById('geo-geolocation');
 	element.innerHTML = 
 		'Code: ' + error.code +
 		'<br />' +
@@ -48,7 +48,7 @@ function initMap(lat, long, rad) {
 
 	// change radius to 500m dated 05102012
 	rad = 500;
-	$('#logs').append('radius = ' + rad + '<br />');
+	$('#geo-logs').append('radius = ' + rad + '<br />');
 
 	var request = {
 		location: pyrmont,
@@ -96,7 +96,7 @@ var places = [];
 var placesLoc = [];
 
 function mapCallBack(results, status) {
-	$('#logs').append('map called back<br />');
+	$('#geo-logs').append('map called back<br />');
 	if (status == google.maps.places.PlacesServiceStatus.OK) {
 
 		for (var i = 0; i < results.length; i++) {
@@ -109,11 +109,11 @@ function mapCallBack(results, status) {
 				placesLoc.push(placeLoc);
 				//$('#logs').append('' + placeName + ' @ ' + placeLoc + '<br />');
 			} else {
-				$('#logs').append('drop = "' + placeName + '"<br />');
+				$('#geo-logs').append('drop = "' + placeName + '"<br />');
 			}
 		}
 	}
-	$("#places").autocomplete({
+	$("#geo-places").autocomplete({
 		source: places
 	});
 }
