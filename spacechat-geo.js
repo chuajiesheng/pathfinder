@@ -4,7 +4,7 @@ var log; // log element
 var input; // input autocomplete element
 
 function getGeo(i, m, l, p) {
-	info = document.getElemenyById(i);
+	info = document.getElementById(i);
 	map = document.getElementById(m);
 	log = document.getElementById(l);
 	input = document.getElementById(p);
