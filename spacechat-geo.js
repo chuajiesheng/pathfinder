@@ -1,17 +1,4 @@
-var info; // geolocation information
-var map; // map element
-var log; // log element
-var input; // input autocomplete element
-
-function getGeo(i, m, l, p) {
-	info = document.getElementById(i);
-	map = document.getElementById(m);
-	log = document.getElementById(l);
-	input = document.getElementById(p);
-
-	document.addEventListener("deviceready", onDeviceReady, false);
-}
-
+document.addEventListener("deviceready", onDeviceReady, false);
 
 // called when phonegap is ready
 function onDeviceReady() {
