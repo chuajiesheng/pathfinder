@@ -40,7 +40,7 @@ var infowindow;
 function initMap(lat, long, rad) {
 	var pyrmont = new google.maps.LatLng(lat, long);
 
-	var map = new google.maps.Map(document.getElementById('map'), {
+	var map = new google.maps.Map(document.getElementById('geo-map'), {
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
 	    center: pyrmont,
 	    zoom: 15
