@@ -53,7 +53,7 @@ function initMap(lat, long, rad) {
 	var request = {
 		location: pyrmont,
 		radius: rad,
-		types: ['subway_station', 'transit_station']
+		types: ['subway_station']
 	};
 
 	var service = new google.maps.places.PlacesService(map);
