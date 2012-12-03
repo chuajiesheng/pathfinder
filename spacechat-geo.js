@@ -47,7 +47,7 @@ function initMap(lat, long, rad) {
 	});
 
 	// change radius to 500m dated 05102012
-	rad = 500;
+	rad = 1500;
 	$('#geo-logs').append('radius = ' + rad + '<br />');
 
 	var request = {
@@ -75,7 +75,7 @@ function mapCallBack(results, status) {
 			if ($.inArray(placeName, places) == -1) {
 				places.push($.trim(placeName));
 				placesLoc.push(placeLoc);
-				//$('#logs').append('' + placeName + ' @ ' + placeLoc + '<br />');
+				$('#geo-logs').append('' + placeName + ' @ ' + placeLoc + '<br />');
 			} else {
 				$('#geo-logs').append('drop = "' + placeName + '"<br />');
 			}
